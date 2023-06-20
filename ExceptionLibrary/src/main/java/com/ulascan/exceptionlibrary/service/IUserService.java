@@ -1,9 +1,9 @@
 package com.ulascan.exceptionlibrary.service;
 
-import com.ulascan.exceptionlibrary.dto.UserDTO;
-
 public interface IUserService {
-    UserDTO getUser();
+    void getUser();
+    void getEmail();
 
-    String throwException();
+    void getGenericError();
+
 }

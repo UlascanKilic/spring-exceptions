@@ -1,10 +1,9 @@
 package com.ulascan.exceptionlibrary.controller;
 
-import com.ulascan.exceptionlibrary.dto.UserDTO;
 import com.ulascan.exceptionlibrary.service.IUserService;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,14 +16,17 @@ public class UserController {
     private final IUserService userService;
 
     @GetMapping
-    public UserDTO getUser(){
-        return userService.getUser();
+    public void getUser(){
+        userService.getUser();
     }
 
-    @GetMapping("/controllerError")
-    public ResponseEntity<?> throwException() {
-        return ResponseEntity
-                .ok(userService.throwException());
+    @GetMapping("/email")
+    public void getEmail(){
+        userService.getEmail();
     }
 
+    @GetMapping("/generic")
+    public void getGenericError(){
+        userService.getGenericError();
+    }
 }

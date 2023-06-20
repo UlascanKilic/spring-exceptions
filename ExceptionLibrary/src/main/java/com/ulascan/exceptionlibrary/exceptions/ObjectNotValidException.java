@@ -1,15 +1,19 @@
 package com.ulascan.exceptionlibrary.exceptions;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import com.ulascan.exceptionlibrary.util.GenericStatusCodes;
 
-import java.util.Set;
+import org.springframework.http.HttpStatus;
 
-@Data
-@RequiredArgsConstructor
-@AllArgsConstructor
-public class ObjectNotValidException extends RuntimeException{
+public class ObjectNotValidException extends BaseException{
 
-    private final Set<String> errorMessages;
+    private static final String label = HttpStatus.FORBIDDEN.getReasonPhrase();
+    private static final HttpStatus httpStatus = HttpStatus.FORBIDDEN;
+
+    public ObjectNotValidException(String exception) {
+        super(exception);
+    }
+
+    public ObjectNotValidException(String exception, GenericStatusCodes genericStatusCode) {
+        super(exception, genericStatusCode, label, httpStatus);
+    }
 }
